@@ -1,3 +1,3 @@
 # To Do List
 
-> Esse projeto está sendo feito para treinar os conhecimentos em PHP e MySQL
+> Esse projeto está sendo desenvolvido para treinar os conhecimentos em PHP e MySQL
