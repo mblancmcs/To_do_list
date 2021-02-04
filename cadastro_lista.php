@@ -20,8 +20,21 @@
 
         mysqli_query($link, $sql);
 
-        header('Location: home.php');
+        /* --  TENTANDO RECUPERAR O id_conteudo, PORÉM FIZ ISSO NO deletar_item.php, POIS PERCEBI QUE NÃO PRECISO FAZER NESSE MOMENTO. --
+        
+        $sql = "SELECT id_conteudo FROM tb_lista WHERE conteudo = '$conteudo' ";
 
+        if(mysqli_query($link, $sql)){
+            
+            echo $_SESSION['id_conteudo'] = $id_conteudo;
+
+        } else {
+            echo 'Erro na query';
+        }
+        */
+
+        header('Location: home.php');
+        
     } else {
         echo 'Houve um problema ao executar a query';
     }

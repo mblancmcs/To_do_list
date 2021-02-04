@@ -80,9 +80,11 @@
         </section>
         <section>
             <h2>Lista de tarefas - Itens Concluídos</h2>
-            
+
         </section>
-        
+        <section>
+            <a href="sair.php">Sair</a>
+        </section>
         
     </article>
 
