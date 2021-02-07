@@ -23,7 +23,7 @@
 
         if($id_conteudo = mysqli_query($link, $sql)){
 
-            $sql = "INSERT INTO tb_concluido(fk_id_conteudo, fk_conteudo) VALUES($id_conteudo, '$deletar_item_conteudo') ";
+            $sql = "INSERT INTO tb_concluido(fk_conteudo) VALUES('$deletar_item_conteudo') "; //Resolvido: tirei o VALUE passado pro fk_id_conteudo com o $id-conteudo, pois pensei que se essa recuperação já está acontecendo por ela ser uma chave estrangeira, a mesma talvez não possa ser passada como parâmetro da intrução SQL
 
             header('Location: home.php');
 
