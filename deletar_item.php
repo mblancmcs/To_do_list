@@ -15,23 +15,24 @@
     print_r($id_conteudo);
     echo '</pre>';
     */
-    $sql = "DELETE FROM tb_lista WHERE conteudo = '$deletar_item_conteudo'";
+
+    $sql = "INSERT INTO tb_concluido(conteudo_concluido) VALUES('$deletar_item_conteudo') "; //Resolvido: tirei o VALUE passado pro fk_id_conteudo com o $id_conteudo, pois pensei que se essa recuperação já está acontecendo por ela ser uma chave estrangeira, a mesma talvez não possa ser passada como parâmetro da intrução SQL
 
     if(mysqli_query($link, $sql)){
 
-        $sql = "SELECT id_conteudo FROM tb_lista WHERE conteudo = '$deletar_item_conteudo' ";
+        $sql = "DELETE FROM tb_lista WHERE conteudo = '$deletar_item_conteudo'";
 
-        if($id_conteudo = mysqli_query($link, $sql)){
+            if(mysqli_query($link, $sql)){
+                echo 'insert realizado';
+            } else {
+                echo 'erro na query';
+            }
 
-            $sql = "INSERT INTO tb_concluido(fk_conteudo) VALUES('$deletar_item_conteudo') "; //Resolvido: tirei o VALUE passado pro fk_id_conteudo com o $id-conteudo, pois pensei que se essa recuperação já está acontecendo por ela ser uma chave estrangeira, a mesma talvez não possa ser passada como parâmetro da intrução SQL
+            //header('Location: home.php');
 
-            header('Location: home.php');
-
-        } else {
-            echo 'Erro na query';
-        }
     } else {
-        echo 'Erro ao executar a query';
+        echo 'Erro na query';
+        //mysqli_error();
     }
 
 

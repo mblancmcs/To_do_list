@@ -24,7 +24,7 @@
         
         $sql = "SELECT id_conteudo FROM tb_lista WHERE conteudo = '$conteudo' ";
 
-        if(mysqli_query($link, $sql)){
+        if($id_conteudo = mysqli_query($link, $sql)){
             
             echo $_SESSION['id_conteudo'] = $id_conteudo;
 
