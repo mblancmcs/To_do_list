@@ -89,26 +89,30 @@
                 }
                 ?>
             </div>
+            <a href="apagar_lista_a_fazer.php" >Apagar Lista</a>
         </section>
         <section>
             <h2>Lista de tarefas - Itens Concluídos</h2>
-            <?php
+            <div>
+                <?php
 
-                $tamanho_array = count($registros);
+                    $tamanho_array = count($registros);
 
-                for($i = 0; $i < $tamanho_array; $i++){
-                    echo $registros[$i]['conteudo_concluido'] . '<br />';
-                }
+                    for($i = 0; $i < $tamanho_array; $i++){
+                        echo $registros[$i]['conteudo_concluido'] . '<br />';
+                    }
 
-                /*
-                foreach($registros as $indiceX=>$registro){
-                    foreach($registro as $indiceY=>$valor){
-                        echo $valor . '<br />';
-                    } // Está dobrando não sei por quê
-                    // Usar o for ao invés de foreach
-                }
-                */
-            ?>
+                    /*
+                    foreach($registros as $indiceX=>$registro){
+                        foreach($registro as $indiceY=>$valor){
+                            echo $valor . '<br />';
+                        } // Está dobrando não sei por quê
+                        // Usar o for ao invés de foreach
+                    }
+                    */
+                ?>
+            </div>
+            <a href="apagar_lista_concluida.php" >Apagar Lista</a>
         </section>
         <section>
             <a href="sair.php">Sair</a>
