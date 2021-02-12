@@ -22,6 +22,18 @@
         echo 'Query de consulta dos itens com problema';
     }
 
+    $sql = "SELECT conteudo_concluido FROM tb_concluido WHERE fk_id_usuario = $id_usuario ";
+
+    $registros = array();
+
+    if($resultado_query = mysqli_query($link, $sql)){
+        while($linha = mysqli_fetch_array($resultado_query)){
+            $registros[] = $linha;
+        }
+    } else {
+        die(mysqli_error($link));
+    }
+
 ?>
 
 <!doctype html>
@@ -80,7 +92,23 @@
         </section>
         <section>
             <h2>Lista de tarefas - Itens Concluídos</h2>
+            <?php
 
+                $tamanho_array = count($registros);
+
+                for($i = 0; $i < $tamanho_array; $i++){
+                    echo $registros[$i]['conteudo_concluido'] . '<br />';
+                }
+
+                /*
+                foreach($registros as $indiceX=>$registro){
+                    foreach($registro as $indiceY=>$valor){
+                        echo $valor . '<br />';
+                    } // Está dobrando não sei por quê
+                    // Usar o for ao invés de foreach
+                }
+                */
+            ?>
         </section>
         <section>
             <a href="sair.php">Sair</a>

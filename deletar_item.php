@@ -8,31 +8,31 @@
     $link = $objDb->conecta_mysql();
 
     $deletar_item_conteudo = $_POST['deletar_item'];
-    /* -- Quando tentei usar pela SESSION --
     
-    $id_conteudo = $_SESSION['id_conteudo'];
-    echo '<pre>';
-    print_r($id_conteudo);
-    echo '</pre>';
+    $id_usuario = $_SESSION['id_usuario'];
+
+    $sql = "INSERT INTO tb_concluido(fk_id_usuario, conteudo_concluido) VALUES($id_usuario, '$deletar_item_conteudo') "; //Atenção: tirei a fk_id_conteudo e coloquei a fk_id_usuario e funcionou, não entendi o por quê.
+
+    mysqli_query($link, $sql) or die(mysqli_error($link));
+
+    /*
+    if(mysqli_query($link, $sql)){
+        echo 'insert realizado';
+    } else {
+
+        echo 'erro na query';
+    }
     */
 
-    $sql = "INSERT INTO tb_concluido(conteudo_concluido) VALUES('$deletar_item_conteudo') "; //Resolvido: tirei o VALUE passado pro fk_id_conteudo com o $id_conteudo, pois pensei que se essa recuperação já está acontecendo por ela ser uma chave estrangeira, a mesma talvez não possa ser passada como parâmetro da intrução SQL
+    $sql = "DELETE FROM tb_lista WHERE conteudo = '$deletar_item_conteudo'";
 
     if(mysqli_query($link, $sql)){
 
-        $sql = "DELETE FROM tb_lista WHERE conteudo = '$deletar_item_conteudo'";
-
-            if(mysqli_query($link, $sql)){
-                echo 'insert realizado';
-            } else {
-                echo 'erro na query';
-            }
-
-            //header('Location: home.php');
+        header('Location: home.php');
 
     } else {
-        echo 'Erro na query';
-        //mysqli_error();
+        echo 'Erro na query' . '<hr />';
+        die(mysqli_error($link));
     }
 
 
