@@ -2,8 +2,6 @@
 
     require_once('conexao_bd.php');
 
-    session_start();
-
     $nome_usuario = $_POST['nome_usuario'];
     $email_usuario = $_POST['email_usuario'];
     $senha_usuario = md5($_POST['senha_usuario']);
@@ -12,7 +10,7 @@
     $link = $objDb->conecta_mysql();
 
     //Para saber se o nome de usuário já existe
-    $sql = "SELECT * FROM tb_usuario WHERE usuario = '$nome_usuario'";
+    $sql = "SELECT usuario FROM tb_usuario WHERE usuario = '$nome_usuario'";
 
     $resultado_id = mysqli_query($link, $sql);
     
@@ -30,7 +28,7 @@
     }
 
     //Para saber se o email já existe
-    $sql = "SELECT * FROM tb_usuario WHERE email = '$email_usuario'";
+    $sql = "SELECT email FROM tb_usuario WHERE email = '$email_usuario'";
     
     $resultado_id = mysqli_query($link, $sql);
 
